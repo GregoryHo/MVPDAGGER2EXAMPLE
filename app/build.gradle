@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+  compileSdkVersion configs.compileSdkVersion
+  defaultConfig {
+    applicationId "com.ns.greg.mvpdagger2example"
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+  dataBinding {
+    enabled = true
+  }
+  compileOptions {
+    sourceCompatibility configs.sourceCompatibility
+    targetCompatibility configs.targetCompatibility
+  }
+  kotlin {
+    experimental {
+      coroutines 'enable'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation deps.kotlin.stdLib
+  implementation deps.android.appCompat
+  implementation deps.android.support
+  implementation deps.android.constraintLayout
+  implementation deps.anko.commons
+  implementation deps.anko.coroutines
+  implementation deps.google.dagger
+  kapt deps.google.daggerProcessor
+  implementation deps.google.daggerAndroid
+  implementation deps.google.daggerAndroidSupport
+  kapt deps.google.daggerAndroidProcessor
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'com.android.support.test:runner:1.0.1'
+  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
