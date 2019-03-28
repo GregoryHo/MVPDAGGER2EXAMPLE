@@ -18,7 +18,7 @@ class MainApplication : Application(), HasComponent<ApplicationComponent> {
         ApplicationModule(this)).sharedPreferencesModule(SharedPreferencesModule()).build()
   }
 
-  override fun component(): ApplicationComponent? {
+  override fun component(): ApplicationComponent {
     return component
   }
 }

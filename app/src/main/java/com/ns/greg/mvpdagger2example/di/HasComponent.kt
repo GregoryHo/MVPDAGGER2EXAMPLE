@@ -6,5 +6,5 @@ package com.ns.greg.mvpdagger2example.di
  */
 interface HasComponent<out C> {
 
-  fun component(): C?
+  fun component(): C
 }

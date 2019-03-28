@@ -19,9 +19,4 @@ interface BaseModel<T, in P : BasePresenter> {
    * Returns the current data set
    */
   fun getDataSet(): T?
-
-  /**
-   * Sets the presenter
-   */
-  fun setPresenter(presenter: P)
 }

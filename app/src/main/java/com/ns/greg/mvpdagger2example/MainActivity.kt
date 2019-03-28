@@ -15,7 +15,8 @@ import javax.inject.Inject
  */
 class MainActivity : AppCompatActivity(), HasComponent<ApplicationComponent> {
 
-  companion object {
+  companion object Constant {
+
     const val WIFI_KEY = "wifi"
   }
 
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity(), HasComponent<ApplicationComponent> {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    component()?.inject(this)
+    component().inject(this)
     showDemo(wifiManager.connectionInfo.bssid)
   }
 
@@ -34,11 +35,13 @@ class MainActivity : AppCompatActivity(), HasComponent<ApplicationComponent> {
     bundle.putString(WIFI_KEY, ssid)
     val fragment = DemoFragment()
     fragment.arguments = bundle
-    supportFragmentManager.beginTransaction().add(id.cl_fragment_root, fragment).show(
-        fragment).commit()
+    supportFragmentManager.beginTransaction()
+        .add(id.cl_fragment_root, fragment)
+        .show(fragment)
+        .commit()
   }
 
-  override fun component(): ApplicationComponent? {
-    return (application as? MainApplication)?.component()
+  override fun component(): ApplicationComponent {
+    return (application as MainApplication).component()
   }
 }

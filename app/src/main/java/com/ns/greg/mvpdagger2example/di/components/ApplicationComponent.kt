@@ -1,7 +1,9 @@
 package com.ns.greg.mvpdagger2example.di.components
 
+import com.ns.greg.mvpdagger2example.AppExecutors
 import com.ns.greg.mvpdagger2example.MainActivity
 import com.ns.greg.mvpdagger2example.SharedPreferenceManager
+import com.ns.greg.mvpdagger2example.di.modules.AppExecutorsModule
 import com.ns.greg.mvpdagger2example.di.modules.ApplicationModule
 import com.ns.greg.mvpdagger2example.di.modules.SharedPreferencesModule
 import dagger.Component
@@ -12,7 +14,8 @@ import javax.inject.Singleton
  * @since 23/04/2018
  */
 @Singleton
-@Component(modules = [ApplicationModule::class, SharedPreferencesModule::class])
+@Component(
+    modules = [ApplicationModule::class, SharedPreferencesModule::class, AppExecutorsModule::class])
 interface ApplicationComponent {
 
   fun inject(activity: MainActivity)
@@ -22,4 +25,6 @@ interface ApplicationComponent {
    *-------------------------------*/
 
   fun sharedPreferenceManager(): SharedPreferenceManager
+
+  fun appExecutors(): AppExecutors
 }

@@ -1,7 +1,6 @@
 package com.ns.greg.mvpdagger2example.view
 
 import com.ns.greg.mvpdagger2example.view.DemoContractor.IDemoFragmentModel
-import com.ns.greg.mvpdagger2example.view.DemoContractor.IDemoFragmentPresenter
 
 /**
  * @author gregho
@@ -26,11 +25,5 @@ class DemoFragmentModel : IDemoFragmentModel {
    */
   override fun getDataSet(): String? {
     return dataSet
-  }
-
-  /**
-   * Sets the presenter
-   */
-  override fun setPresenter(presenter: IDemoFragmentPresenter) {
   }
 }
